@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'animation.dart';
+import 'mywidget.dart';
 
-void main() => runApp(new MyApp());
+//void main() => runApp(new MyApp());
+//void main() => runApp(new MyWidget());
+void main()=>runApp(new FadeApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -18,6 +22,7 @@ class MyApp extends StatelessWidget {
 
 //创建一个statefulwidget类，这个类至少需要一个可变的state类
 class RandomWords extends StatefulWidget {
+  //需要重写的方法
   @override
   State<StatefulWidget> createState() {
     return new RandomWordsState();
@@ -57,7 +62,7 @@ class RandomWordsState extends State<RandomWords> {
         //参数是一个匿名函数，返回一个widget组件
         builder: (context) {
       //返回一个迭代器Iterable
-      final titles = _saved.map(
+      final Iterable<ListTile> titles = _saved.map(
           //又是一个匿名函数，处理每个迭代元素的函数
           (pair) {
         return ListTile(
